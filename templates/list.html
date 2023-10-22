@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block title %}All Todo's{% endblock %}
+{% block content %}
+
+{% for onetodo in alltodos %}
+<div class="cart-body">
+  <div class="row">
+   
+      <div class="col-md-6" style="margin:0 auto;">
+          <div class="card container-fluid" style="margin-top: 1rem;">
+              <div class="card-body">
+                <h5 class="card-title"> {{onetodo.title}} </h5>
+                <h5 class="card-title">{{onetodo.priority| timeuntil}} </h5>
+                <p class="card-text">{{onetodo.description}}</p>
+                <p class="card-text">{{onetodo.created_at}} </p>
+
+                
+                <a href="{% url 'delete' onetodo.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'edit' onetodo.id %}" class="btn btn-warning">Edit</a>
+                
+
+              </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+<style>
+
+  
+  .card-body {
+
+    background-color: rgb(118, 253, 0);
+}
+
+
+
+
+  
+</style>
+
+{% endfor %}
+
+{% endblock %}
